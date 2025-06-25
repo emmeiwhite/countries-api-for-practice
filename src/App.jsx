@@ -4,9 +4,9 @@ import { useQuery } from '@tanstack/react-query'
 import SearchAndFilter from './components/SearchAndFilter'
 import CountriesList from './components/CountriesList'
 
-const url = 'https://dummyjson.com/recipes'
+const url = 'https://restcountries.com/v2/all?fields=name,region,capital,flag,population'
 
-const fetchRecipes = async () => {
+const fetchCountries = async () => {
   const res = await fetch(url)
   if (!res.ok) throw new Error('Failed to fetch recipes')
   return res.json()
@@ -14,9 +14,12 @@ const fetchRecipes = async () => {
 
 function App() {
   const { isLoading, error, data } = useQuery({
-    queryKey: ['recipes'],
-    queryFn: fetchRecipes
+    queryKey: ['countries'],
+    queryFn: fetchCountries
   })
+
+  console.log(data)
+
   return (
     <main>
       <Header />
@@ -26,8 +29,9 @@ function App() {
       <CountriesList
         isLoading={isLoading}
         error={error}
-        data={data}
+        countriesData={data}
       />
+
       <Footer />
     </main>
   )
