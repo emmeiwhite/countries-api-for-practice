@@ -1,6 +1,8 @@
 import Footer from './components/Footer'
 import Header from './components/Header'
 import { useQuery } from '@tanstack/react-query'
+import SearchForm from './components/SearchForm'
+import SearchAndFilter from './components/SearchAndFilter'
 
 const url = 'https://dummyjson.com/recipes'
 
@@ -18,7 +20,8 @@ function App() {
     <main>
       <Header />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <SearchAndFilter />
+      {/* <div className="max-w-6xl mx-auto px-6">
         <section className="py-8">
           {isLoading && <p>Loading recipes...</p>}
           {error && <p className="text-red-600">{error.message}</p>}
@@ -35,7 +38,7 @@ function App() {
             </ul>
           )}
         </section>
-      </div>
+      </div> */}
       <Footer />
     </main>
   )
