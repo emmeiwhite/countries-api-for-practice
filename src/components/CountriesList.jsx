@@ -1,6 +1,17 @@
+import Skeleton from './Skeleton'
+
 export default function CountriesList({ isLoading, error, countriesData }) {
-  if (isLoading) return <div className="max-w-6xl mx-auto px-6 py-8 min-h-[700px]">Loading...</div>
-  if (isLoading) return <div className="max-w-6xl mx-auto px-6 py-8 min-h-[700px]">Error...</div>
+  if (isLoading)
+    return (
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {Array.from({ length: 30 }).map((_, index) => {
+            return <Skeleton key={index} />
+          })}
+        </div>
+      </div>
+    )
+  if (error) return <div className="max-w-6xl mx-auto px-6 py-8 min-h-[700px]">Error...</div>
 
   return (
     <div className="max-w-6xl mx-auto px-6">
