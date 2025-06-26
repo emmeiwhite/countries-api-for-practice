@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { LuSearch } from 'react-icons/lu'
+import { useCountries } from '../context/CountriesContext'
 
 export default function SearchForm() {
-  const [query, setQuery] = useState('')
+  const { searchTerm, setSearchTerm } = useCountries()
 
   return (
     <form>
@@ -13,8 +13,8 @@ export default function SearchForm() {
 
         <input
           type="text"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
           placeholder="Search for the country"
           className="outline-0"
         />
