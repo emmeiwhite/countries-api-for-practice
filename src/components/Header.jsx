@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { LuMoon } from 'react-icons/lu'
 import { LuSun } from 'react-icons/lu'
+import { useTheme } from '../context/ThemeContext'
 
 export default function Header() {
-  const [isDark, setIsDark] = useState(false)
+  // const [isDark, setIsDark] = useState(false)
+  const { mode, handleMode } = useTheme()
 
-  function handleLightDark() {
-    console.log('handleDarkLight')
-    setIsDark(!isDark)
-  }
+  // function handleLightDark() {
+  //   console.log('handleDarkLight')
+  //   setIsDark(!isDark)
+  // }
   return (
     <header className="bg-gray-600">
       <div className="max-w-6xl mx-auto px-6 flex justify-between py-4">
@@ -16,8 +18,8 @@ export default function Header() {
 
         <button
           className="text-white cursor-pointer text-2xl"
-          onClick={handleLightDark}>
-          {isDark ? <LuSun /> : <LuMoon />}
+          onClick={handleMode}>
+          {mode === 'light' ? <LuMoon /> : <LuSun />}
         </button>
       </div>
     </header>
