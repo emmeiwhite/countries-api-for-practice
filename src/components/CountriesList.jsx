@@ -2,7 +2,8 @@ import { useCountries } from '../context/CountriesContext'
 import Skeleton from './Skeleton'
 
 export default function CountriesList() {
-  const { isLoading, error, data } = useCountries()
+  const { isLoading, error, filteredCountries } = useCountries()
+
   // No more props, direct access to the context now.
 
   if (isLoading)
@@ -23,11 +24,13 @@ export default function CountriesList() {
       </div>
     )
 
+  console.log('FILTERED_COUNTRIES:')
+  console.log(filteredCountries)
   return (
     <div className="max-w-6xl mx-auto px-6">
       <section className="py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {data.map(country => (
+          {filteredCountries.map(country => (
             <div
               key={country.name}
               className="border rounded p-4">

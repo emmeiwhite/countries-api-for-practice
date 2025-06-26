@@ -14,7 +14,7 @@ export default function SearchForm() {
         <input
           type="text"
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value.toLowerCase())}
           placeholder="Search for the country"
           className="outline-0"
         />
