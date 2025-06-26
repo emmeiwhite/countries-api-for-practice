@@ -1,6 +1,6 @@
 // Step-1: Create Context
 
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { createContext } from 'react'
 
 const ThemeContext = createContext()
@@ -13,11 +13,18 @@ export default function ThemeProvider({ children }) {
   // Toggle Mode Functionality
   function handleMode() {
     if (mode === 'light') {
-      setMode('dark')
+      setMode('')
     } else {
       setMode('light')
     }
   }
+
+  /** --- When mode changes we'll add/remove dark class from the html tag, Perform side-effect */
+  useEffect(() => {
+    console.log(document.documentElement)
+    // document.documentElement.classList.toggle('dark') // tailwindCSS special class 'dark'
+    document.body.classList.toggle('dark')
+  }, [mode])
 
   return <ThemeContext.Provider value={{ mode, handleMode }}>{children}</ThemeContext.Provider>
 }

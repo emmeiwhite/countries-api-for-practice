@@ -3,6 +3,8 @@ import Header from './components/Header'
 import { useQuery } from '@tanstack/react-query'
 import SearchAndFilter from './components/SearchAndFilter'
 import CountriesList from './components/CountriesList'
+import { useEffect } from 'react'
+import { useTheme } from './context/ThemeContext'
 
 const url = 'https://restcountries.com/v2/all?fields=name,region,capital,flag,population'
 
@@ -18,10 +20,8 @@ function App() {
     queryFn: fetchCountries
   })
 
-  console.log(data)
-
   return (
-    <main>
+    <main className="bg-white-300 dark:bg-gray-900 dark:text-white">
       <Header />
 
       <SearchAndFilter />

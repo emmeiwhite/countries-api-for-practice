@@ -12,7 +12,7 @@ export default function Header() {
   //   setIsDark(!isDark)
   // }
   return (
-    <header className="bg-gray-600">
+    <header className="bg-gray-600 dark:bg-gray-800 dark:text-white">
       <div className="max-w-6xl mx-auto px-6 flex justify-between py-4">
         <h1 className="text-xl text-white font-semibold">Where in the World?</h1>
 

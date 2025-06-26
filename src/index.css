@@ -1,1 +1,7 @@
 @import 'tailwindcss';
+
+/* Enable ::after
+  🧱 Step-by-Step Dark Mode Setup in Tailwind 4
+1. ✅ Enable class strategy in tailwind.config.js:
+*/
+@custom-variant dark (&:where(.dark, .dark *));
