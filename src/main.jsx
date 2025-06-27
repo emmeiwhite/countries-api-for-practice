@@ -3,18 +3,29 @@ import './index.css'
 import App from './App.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ThemeProvider from './context/ThemeContext.jsx'
-import { BrowserRouter } from 'react-router-dom'
 import CountriesProvider from './context/CountriesContext.jsx'
+
+/*--- 
+React-Router-DOM version 6+  
+https://reactrouter.com/6.30.1/start/tutorial  
+ --- */
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [{ index: true }]
+  }
+])
 
 const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <CountriesProvider>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </CountriesProvider>
-    </BrowserRouter>
+    <CountriesProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </CountriesProvider>
   </QueryClientProvider>
 )
