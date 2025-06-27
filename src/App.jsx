@@ -8,9 +8,11 @@ function App() {
     <main className="bg-white-300 dark:bg-gray-900 dark:text-white">
       <Header />
 
-      <Outlet />
-      {/*  ← this is where child routes render */}
+      <div>
+        <Outlet />
+      </div>
 
+      {/*  ← this is where child routes render, These are the pages to the routes. It is similar to {children} in Next.js*/}
       <Footer />
     </main>
   )
