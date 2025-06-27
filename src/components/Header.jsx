@@ -12,8 +12,16 @@ export default function Header() {
         <h1 className="text-xl text-white font-semibold">Where in the World?</h1>
 
         <div className="flex gap-5">
-          <Link to="/">Home</Link>
-          <Link to="about">About</Link>
+          <Link
+            to="/"
+            className="text-amber-400 dark:text-white hover:underline">
+            Home
+          </Link>
+          <Link
+            to="about"
+            className="text-amber-400 dark:text-white hover:underline">
+            About
+          </Link>
         </div>
         <button
           className="text-white cursor-pointer text-2xl"

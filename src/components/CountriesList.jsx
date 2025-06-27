@@ -1,5 +1,6 @@
 import { useCountries } from '../context/CountriesContext'
 import Skeleton from './Skeleton'
+import { Link } from 'react-router-dom'
 
 export default function CountriesList() {
   const { isLoading, error, filteredCountries } = useCountries()
@@ -31,19 +32,21 @@ export default function CountriesList() {
       <section className="py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredCountries.map(country => (
-            <div
-              key={country.name}
-              className="border rounded p-4">
-              <img
-                src={country.flag}
-                alt={`${country.name} flag`}
-                className="w-16 h-10 mb-2"
-              />
-              <h2 className="font-bold">{country.name}</h2>
-              <p>{country.region}</p>
-              <p>Capital: {country.capital}</p>
-              <p>Population: {country.population.toLocaleString()}</p>
-            </div>
+            <Link to={`country/${country.name}`}>
+              <div
+                key={country.name}
+                className="border rounded p-4">
+                <img
+                  src={country.flag}
+                  alt={`${country.name} flag`}
+                  className="w-16 h-10 mb-2"
+                />
+                <h2 className="font-bold">{country.name}</h2>
+                <p>{country.region}</p>
+                <p>Capital: {country.capital}</p>
+                <p>Population: {country.population.toLocaleString()}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
